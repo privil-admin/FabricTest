@@ -1,0 +1,161 @@
+table 'HumanResources vEmployee'
+	lineageTag: 77eedbc2-b684-43d7-b571-98460cba19d4
+
+	column BusinessEntityID
+		dataType: int64
+		formatString: 0
+		lineageTag: 62732d3c-16fd-4c92-a273-63298c8918ed
+		summarizeBy: none
+		sourceColumn: BusinessEntityID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		lineageTag: b0c667fd-9a2a-43d2-aa58-43883bb01e25
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 8a09c4de-c494-4b1a-8c4d-fce5d0355e1b
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MiddleName
+		dataType: string
+		lineageTag: d0a39b30-1daf-4f22-b6c8-f75aacd35c32
+		summarizeBy: none
+		sourceColumn: MiddleName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 9efe4a1e-626d-43c4-ac3d-e255b41da2b1
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Suffix
+		dataType: string
+		lineageTag: d079f9c0-73f9-4c26-9731-7a50afaf08da
+		summarizeBy: none
+		sourceColumn: Suffix
+
+		annotation SummarizationSetBy = Automatic
+
+	column JobTitle
+		dataType: string
+		lineageTag: 97f4ac57-5cc6-4a55-919e-b0de916be4c7
+		summarizeBy: none
+		sourceColumn: JobTitle
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneNumber
+		dataType: string
+		lineageTag: ad16ae28-e67f-403a-9cb3-ab3796151a72
+		summarizeBy: none
+		sourceColumn: PhoneNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column PhoneNumberType
+		dataType: string
+		lineageTag: c43f786c-23bc-4c47-a19a-bc761cc45aa4
+		summarizeBy: none
+		sourceColumn: PhoneNumberType
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: ac77a7f3-1cf0-421e-82cc-ea3ae5139b14
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailPromotion
+		dataType: int64
+		formatString: 0
+		lineageTag: 6671464a-bbc2-4dd7-b4dc-043206b4c108
+		summarizeBy: sum
+		sourceColumn: EmailPromotion
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine1
+		dataType: string
+		lineageTag: 3c5e4895-3018-4361-b9e0-a3839ea902bd
+		summarizeBy: none
+		sourceColumn: AddressLine1
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine2
+		dataType: string
+		lineageTag: d1b87193-5bc5-4f5e-afcc-f2a641a624c6
+		summarizeBy: none
+		sourceColumn: AddressLine2
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 37905a50-45bc-4925-a73c-932bf4c1959c
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvinceName
+		dataType: string
+		lineageTag: c1f46985-6fd6-4d34-83e0-1d7c8ff95feb
+		summarizeBy: none
+		sourceColumn: StateProvinceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PostalCode
+		dataType: string
+		lineageTag: 50f65143-fa2c-4e64-9ecf-aa4d15ebd686
+		summarizeBy: none
+		sourceColumn: PostalCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryRegionName
+		dataType: string
+		lineageTag: 0e824cf6-2e4b-4adb-9083-5dd6f0a867c5
+		summarizeBy: none
+		sourceColumn: CountryRegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column AdditionalContactInfo
+		dataType: string
+		lineageTag: d614fdb7-b904-4e0f-a944-f884c4abd307
+		summarizeBy: none
+		sourceColumn: AdditionalContactInfo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'HumanResources vEmployee' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("ejimenez"),
+				    AdventureWorks2022 = Source{[Name="AdventureWorks2022"]}[Data],
+				    HumanResources_vEmployee = AdventureWorks2022{[Schema="HumanResources",Item="vEmployee"]}[Data]
+				in
+				    HumanResources_vEmployee
+
+	annotation PBI_ResultType = Table
+

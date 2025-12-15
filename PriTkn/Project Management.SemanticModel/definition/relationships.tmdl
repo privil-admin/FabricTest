@@ -1,0 +1,10 @@
+relationship 4aa5a948-6c53-409f-8d2c-80dfcf7039fe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Projects.'Start Date'
+	toColumn: LocalDateTable_f8c309a6-eef0-4796-ba41-be120e260893.Date
+
+relationship cecba911-3ccb-4341-9bad-7751a2f1efc6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Projects.'End Date'
+	toColumn: LocalDateTable_756d06c1-4351-47de-b982-949910fd7e15.Date
+

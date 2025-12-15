@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["HumanResources vEmployee","HumanResources vEmployeeDepartment","HumanResources vEmployeeDepartmentHistory","HumanResources vJobCandidate","HumanResources vJobCandidateEducation","HumanResources vJobCandidateEmployment"]
+
+ref table 'HumanResources vEmployee'
+ref table 'HumanResources vEmployeeDepartment'
+ref table DateTableTemplate_d015a033-8b5b-4ed1-892e-da5f78b537b8
+ref table LocalDateTable_26e9a0ba-e867-4d58-832c-324d2366b20b
+ref table 'HumanResources vEmployeeDepartmentHistory'
+ref table LocalDateTable_1b838618-5bc1-46f9-b2c9-e758ee895e3f
+ref table LocalDateTable_76e2cb5b-b4a2-4bd0-b9a2-16618c04b290
+ref table 'HumanResources vJobCandidate'
+ref table LocalDateTable_238ec919-cba1-45ee-b4be-009806db4f8c
+ref table 'HumanResources vJobCandidateEducation'
+ref table LocalDateTable_7e1e51ee-0b02-4b65-96eb-f3a534c98e65
+ref table LocalDateTable_cd9d5a04-d857-4646-bd75-4e02e01ba10f
+ref table 'HumanResources vJobCandidateEmployment'
+ref table LocalDateTable_591d121d-4ac2-42a4-87fd-db2a7fa10ec6
+ref table LocalDateTable_99b588f9-d43b-405b-9d0f-044b2b1b1f50
+
+ref cultureInfo en-US
+

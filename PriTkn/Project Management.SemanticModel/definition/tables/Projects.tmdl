@@ -1,0 +1,98 @@
+table Projects
+	lineageTag: 44e7f380-85a8-458d-9c90-1851d60172ba
+
+	column 'Project Name'
+		dataType: string
+		lineageTag: 1a7907a6-4f28-4e2d-9c62-92cf1d94566e
+		summarizeBy: none
+		sourceColumn: Project Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Task Name'
+		dataType: string
+		lineageTag: a3230f34-95f3-49be-8d2d-cf0197905180
+		summarizeBy: none
+		sourceColumn: Task Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assigned to'
+		dataType: string
+		lineageTag: 9c958ddc-062a-459f-a604-80a630f1d7ce
+		summarizeBy: none
+		sourceColumn: Assigned to
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2fb9f6ab-a9fe-4a7c-9276-f4ef59d6b5ca
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		variation Variation
+			isDefault
+			relationship: 4aa5a948-6c53-409f-8d2c-80dfcf7039fe
+			defaultHierarchy: LocalDateTable_f8c309a6-eef0-4796-ba41-be120e260893.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days Required'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7aa85e94-81c0-4228-bf00-d42cdcce7a95
+		summarizeBy: sum
+		sourceColumn: Days Required
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 339856fd-60ef-4971-b505-0a838a12aa8f
+		summarizeBy: none
+		sourceColumn: End Date
+
+		variation Variation
+			isDefault
+			relationship: cecba911-3ccb-4341-9bad-7751a2f1efc6
+			defaultHierarchy: LocalDateTable_756d06c1-4351-47de-b982-949910fd7e15.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Progress
+		dataType: double
+		lineageTag: e3be489c-ed3c-479a-9a77-9368d642a35f
+		summarizeBy: sum
+		sourceColumn: Progress
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	hierarchy 'Project Name Hierarchy'
+		lineageTag: 2129a119-fbb0-41c4-adb1-a6dd2f570847
+
+		level 'Project Name'
+			lineageTag: 86e1cf83-524f-4798-87af-42d97caefa37
+			column: 'Project Name'
+
+	partition Projects = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("\\EJIMENEZ\Sample Files\SampleExcel.xlsx"), null, true),
+				    Projects_Sheet = Source{[Item="Projects",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Projects_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Project Name", type text}, {"Task Name", type text}, {"Assigned to", type text}, {"Start Date", type date}, {"Days Required", Int64.Type}, {"End Date", type date}, {"Progress", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

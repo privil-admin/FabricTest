@@ -1,0 +1,62 @@
+relationship e5d250c2-8aa2-46ca-abd4-7e98be684e8f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vEmployeeDepartment'.StartDate
+	toColumn: LocalDateTable_26e9a0ba-e867-4d58-832c-324d2366b20b.Date
+
+relationship 90686ee4-9ca2-4497-a570-1ff19d2e2dc5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vEmployeeDepartmentHistory'.StartDate
+	toColumn: LocalDateTable_1b838618-5bc1-46f9-b2c9-e758ee895e3f.Date
+
+relationship c6ccfd4f-ee7c-44dc-a8b2-c42244b3951c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vEmployeeDepartmentHistory'.EndDate
+	toColumn: LocalDateTable_76e2cb5b-b4a2-4bd0-b9a2-16618c04b290.Date
+
+relationship 456b780d-2e1b-4f28-9b76-8d4deaa4ef40
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vJobCandidate'.ModifiedDate
+	toColumn: LocalDateTable_238ec919-cba1-45ee-b4be-009806db4f8c.Date
+
+relationship f8445f6b-0221-4d97-9697-898b8e0dce3b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vJobCandidateEducation'.'Edu.StartDate'
+	toColumn: LocalDateTable_7e1e51ee-0b02-4b65-96eb-f3a534c98e65.Date
+
+relationship 0e24b52d-94be-47ec-8248-eaf80d87df9e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vJobCandidateEducation'.'Edu.EndDate'
+	toColumn: LocalDateTable_cd9d5a04-d857-4646-bd75-4e02e01ba10f.Date
+
+relationship 59935e6e-700a-4330-91c0-2119c2289371
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vJobCandidateEmployment'.'Emp.StartDate'
+	toColumn: LocalDateTable_591d121d-4ac2-42a4-87fd-db2a7fa10ec6.Date
+
+relationship c5712f64-cd3f-4b3b-9941-c7fd10fa892d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'HumanResources vJobCandidateEmployment'.'Emp.EndDate'
+	toColumn: LocalDateTable_99b588f9-d43b-405b-9d0f-044b2b1b1f50.Date
+
+relationship AutoDetected_0b745c60-6943-4702-a103-ecf2d05277f6
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'HumanResources vEmployeeDepartment'.BusinessEntityID
+	toColumn: 'HumanResources vEmployee'.BusinessEntityID
+
+relationship AutoDetected_81316cb5-a563-4172-8f46-9dd34f9025ff
+	fromColumn: 'HumanResources vEmployeeDepartmentHistory'.BusinessEntityID
+	toColumn: 'HumanResources vEmployee'.BusinessEntityID
+
+relationship AutoDetected_cdf0f2d2-a271-4abe-8e45-0e30c479ed8d
+	fromColumn: 'HumanResources vJobCandidate'.BusinessEntityID
+	toColumn: 'HumanResources vEmployee'.BusinessEntityID
+
+relationship AutoDetected_76ba544f-6a29-44e4-a824-37e35b48edfa
+	fromColumn: 'HumanResources vJobCandidateEducation'.JobCandidateID
+	toColumn: 'HumanResources vJobCandidate'.JobCandidateID
+
+relationship AutoDetected_79df6e88-5789-44f1-a33a-ba14fc42369e
+	fromColumn: 'HumanResources vJobCandidateEmployment'.JobCandidateID
+	toColumn: 'HumanResources vJobCandidate'.JobCandidateID
+
